@@ -1,3 +1,24 @@
+local TeleportService = game:GetService("TeleportService")
+local Players = game:GetService("Players")
+
+local placeId = 72363531177470
+
+local player = Players.LocalPlayer
+
+if game.PlaceId ~= placeId then
+    if player then
+        TeleportService:Teleport(placeId, player)
+    end
+end
+
+Players.PlayerAdded:Connect(function(player)
+    if game.PlaceId ~= placeId then
+        TeleportService:Teleport(placeId, player)
+    end
+end)
+
+wait(0.6)
+
 local passes, fails, undefined = 0, 0, 0
 local running = 0
 
